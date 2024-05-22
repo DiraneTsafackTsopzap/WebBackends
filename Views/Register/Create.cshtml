@@ -1,0 +1,66 @@
+﻿
+@model Benutzer
+
+<div class="container py-5">
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">Ein Konto anlegen </h1>
+        <hr class="mt-0 mb-5 bg-dark">
+    </div>
+
+    <div class="row">
+
+        &nbsp;
+    </div>
+
+    <div class="row">
+        <form asp-controller="Register" asp-action="Create">
+
+
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div class="mb-3">
+                <label class="form-label">Firstname</label>
+                <input type="text" asp-for="Firstname" class="form-control">
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Lastname</label>
+                <input asp-for="Lastname" name="lastname" type="text" class="form-control">
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email </label>
+                <input asp-for="Email" type="text" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Password </label>
+                <input asp-for="Password" type="password" class="form-control">
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+            </div>
+
+            @*<div class="mb-3">
+            <label for="IsAdmin" class="form-label">IsAdmin</label>
+            <input asp-for="IsAdmin" type="checkbox" class="form-check-input">
+            <span asp-validation-for="IsAdmin" class="text-danger"></span>
+        </div>*@
+
+
+
+
+
+            <button type="submit" class="btn btn-primary">Erstellen</button>
+            <button type="submit" asp-action="Login" asp-controller="Authentification" class="btn btn-success">Login</button>
+
+        </form>
+
+    </div>
+
+
+
+
+</div>

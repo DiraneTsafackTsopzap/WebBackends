@@ -1,0 +1,82 @@
+﻿
+
+@model List<Sitzplatz>
+
+
+<div class="container shadow py-5">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">SitzplatzesListes</h1>
+        <hr class="mt-0 mb-5 bg-black">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">BusName</th>
+                    <th scope="col">SiegeNummer</th>
+                    
+
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var sitzplatz in Model)
+                {
+                <tr>
+
+                    <td>@sitzplatz.Bus.BusName</td>
+
+
+
+                    <td>@sitzplatz.Nummer</td>
+                  
+                    <td>
+
+                        <a asp-area="" asp-controller="Sitzplatz"
+                           asp-action="Delete"
+                           asp-route-id="@sitzplatz.SitzplatzId" class="btn btn-danger">Delete</a>
+                    </td>
+
+
+                </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <p>Kein Sitzplatz verfugbar</p>
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+

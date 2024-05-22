@@ -1,0 +1,93 @@
+﻿
+
+@model List<Reservation>
+
+
+<div class="container shadow py-5">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">ReservationListes</h1>
+        <hr class="mt-0 mb-5 bg-black">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+    @if (Model != null && Model.Any())
+
+
+   
+    {
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">ReservationId</th>
+                    <th scope="col">SitzplatzNummer</th>
+                    <th scope="col">Bus</th>
+                    <th scope="col">Benutzer</th>
+                    <th scope="col">ReservationDate</th>
+
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+
+
+                @foreach (var reservation in Model)
+                {
+                    <tr>
+
+                        <td>@reservation.ReservationId</td>
+                        <td>@reservation.Sitzplatz.Nummer</td>
+                        <td>@reservation.Bus.BusName</td>
+                        <td>@reservation.Benutzer.Lastname</td>
+                        <td>@reservation.ReservationDate.ToString("yy-MM-dd") - @reservation.Bus.AbfahrtsZeit.ToString("HH:mm")</td>
+
+
+
+                        <td>
+
+                            <a asp-area="" asp-controller="Bus"
+                               asp-action="Deleting"
+                               asp-route-id="@reservation.ReservationId" class="btn btn-danger">Delete
+                           </a>
+                        </td>
+
+                   
+
+
+                    </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <p>Keine Reservation verfugbar</p>
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+

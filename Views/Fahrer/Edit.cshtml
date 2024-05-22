@@ -1,0 +1,81 @@
+﻿
+
+
+@*@model Fahrer*@
+
+@using webapp.ViewModels;
+
+@model FahrerViewModel;
+
+<div class="container shadow py-5">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0"> Neuer Fahrer Erstellen </h1>
+        <hr class="mt-0 mb-5 bg-black">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+    <form  asp-action="Edit">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+            <div class="col-4">
+
+                <label asp-for="FahrerName"></label>
+                <input type="text" class="form-control" asp-for="FahrerName">
+                <span asp-validation-for="FahrerName" class="text-danger"></span>
+
+
+            </div>
+            <div class="col-4">
+                <label asp-for="FahrerVorName"></label>
+                <input type="text" class="form-control" asp-for="FahrerVorName">
+                <span asp-validation-for="FahrerVorName" class="text-danger"></span>
+            </div>
+
+            <div class="col-4">
+                <label asp-for="Age"></label>
+                <input type="text" class="form-control" asp-for="Age">
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <label asp-for="Email"></label>
+                <input type="email" class="form-control" asp-for="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="col-6">
+                <label asp-for="Image"></label>
+                <input type="text" class="form-control" asp-for="Image">
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+        </div>
+
+
+        <div class="row">
+            &nbsp;
+        </div>
+
+
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-outline-warning float-right" />
+            <a class="btn btn-primary" asp-action="List">Zuruck to Listes</a>
+        </div>
+
+    </form>
+
+
+
+
+
+
+
+
+</div>
+

@@ -1,0 +1,98 @@
+﻿@model List<Sitzplatz>
+
+
+<div class="container shadow py-5">
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">Kreuzen Sie ein SitzplatzNummer um zu Reservieren </h1>
+        <hr class="mt-0 mb-5 bg-black">
+    </div>
+
+
+
+
+
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+    @if (Model != null && Model.Any())
+    {
+        <form asp-action="Details">
+
+            <input type="hidden" name="busId" value=@ViewBag.BusId />
+
+            <div class="row">
+
+
+                @*<p>Bus ID : @ViewBag.SelectedBusId</p>*@
+                <p>Selektiertes Datum : @ViewBag.SelectedDate.ToShortDateString()</p>
+
+
+                
+
+                @*<div class="col-6">
+                        <label for="reservationDate">Sélectionnez la date de réservation</label>
+                        <input id="ReservationDate" name="ReservationDate" type="date" class="form-control" required>
+
+                    </div>*@
+
+            </div>
+
+
+
+            <div class="row">
+                &nbsp;
+            </div>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nummer von Sitzplatz</th>
+                        @*<th>Is Available</th>*@
+                        <th>Reservieren</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var seat in Model)
+                    {
+                        <tr>
+                            <td>
+                                SitzplatNummer @seat.Nummer
+                            </td>
+
+                            <td>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox"
+                                           name="ListesSelectedSeats" value="@seat.SitzplatzId" id="@seat.SitzplatzId">
+
+                                </div>
+
+                            </td>
+                      
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+
+            <div class="form-group">
+                <input type="submit" value="SitzplatReservieren" class="btn btn-outline-success float-right" />
+                <a class="btn btn-primary" asp-action="List">Zuruck to Listes</a>
+            </div>
+        </form>
+    }
+    else
+    {
+        <p>Kein Siege verfugbar</p>
+    }
+
+</div>
+
+
+
+
+
+

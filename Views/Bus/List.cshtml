@@ -1,0 +1,77 @@
+﻿
+
+@model List<Bus>
+
+
+<div class="container shadow py-5">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">BusListes</h1>
+        <hr class="mt-0 mb-5 bg-black">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">Name</th>
+                    <th scope="col">Startziel</th>
+                    <th scope="col">EndZiel</th>
+                    <th scope="col">Fahrer</th>
+
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                <tr>
+                    <td>@Model[i].BusName</td>
+                    <td>@Model[i].StartZiel</td>
+                    <td>@Model[i].EndZiel</td>
+                    
+                    <td>@Model[i].Fahrer.FahrerName</td>
+
+                    <td>
+                        <a 
+                           asp-action="Delete"
+                           asp-route-id="@Model[i].BusId" class="btn btn-danger">Delete</a>
+                    </td>
+                   
+                </tr>
+                }
+
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <p>Kein Bus verfugbar</p>
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+

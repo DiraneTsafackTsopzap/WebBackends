@@ -1,0 +1,55 @@
+﻿
+@model Sitzplatz
+
+<div class="container shadow py-5">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">Neues Sitzplatz Erstellen</h1>
+        <hr class="mt-0 mb-5 bg-black">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+    <form asp-action="Create">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="row">
+            <div class="col-6">
+                <label for="exampleInputEmail1" class="form-label">Bus</label>
+                <select asp-items="ViewBag.ListesBussToDropdown" type="text" class="form-control" asp-for="BusId">
+                    <option value="">Sélectionnez un Bus</option>
+                </select>
+                <span asp-validation-for="BusId" class="text-danger"></span>
+            </div>
+
+            <div class="col-6">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">SiegeNumber :  </label>
+                    <input type="text" class="form-control" asp-for="Nummer">
+                    <span asp-validation-for="Nummer" class="text-danger"></span>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+            <a class="btn btn-primary" asp-action="List">Zuruck to Listes</a>
+        </div>
+
+    </form>
+
+
+
+
+
+
+
+
+</div>
+

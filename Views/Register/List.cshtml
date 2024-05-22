@@ -1,0 +1,88 @@
+﻿
+@model List<Benutzer>
+
+
+<div class="container shadow py-5">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">BenutzerListes</h1>
+        <hr class="mt-0 mb-5 bg-black">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">Firstname</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">IsAdmin</th>
+
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var benutzer in Model)
+                {
+                <tr>
+
+                    <td>@benutzer.Firstname</td>
+                    <td>@benutzer.Lastname</td>
+                    <td>@benutzer.IsAdmin</td>
+
+                    <td>
+
+                        <a asp-area="" asp-controller="Register"
+                           asp-action="Edit"
+                           asp-route-id="@benutzer.BenutzerId" class="btn btn-primary">Edit</a>
+                    </td>
+
+
+
+                    
+
+                    <td>
+
+                        <a asp-area="" asp-controller="Register"
+                           asp-action="Delete"
+                           asp-route-id="@benutzer.BenutzerId" class="btn btn-danger">Delete</a>
+                    </td>
+
+                </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <p>Kein Benutzer verfugbar</p>
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+

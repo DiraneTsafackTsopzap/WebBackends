@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - webapp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">webapp</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" 
+                        data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        
+                            @if (Context.Items["User_"] != null)
+                            {
+                                @if ((bool)Context.Items["IsAdmin_"])
+                                {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Benutzer
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-controller="Register" asp-action="List">BenutzerListes</a></li>
+
+                               
+                            </ul>
+
+                        </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Fahrer
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" asp-controller="Fahrer" asp-action="Create">Create</a></li>
+
+                                            <li><a class="dropdown-item" asp-controller="Fahrer" asp-action="List">FahrerListes</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Bus
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" asp-controller="Bus" asp-action="Create">Create</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Bus" asp-action="Reservation">Reservation</a></li>
+                                            <li><a class="dropdown-item" asp-controller="Bus" asp-action="ListeReservation">ListeReservationUsers</a></li>
+                                            
+                                            <li><a class="dropdown-item" asp-controller="Bus" asp-action="List">ListesBus</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Sitzplatz
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" asp-controller="Sitzplatz" asp-action="Create">Create</a></li>
+
+                                            <li><a class="dropdown-item" asp-controller="Sitzplatz" asp-action="List">SitzplatzListes</a></li>
+                                        </ul>
+                                    </li>
+
+                                }
+                                else
+                                {<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Bus
+    </a>
+    <ul class="dropdown-menu">
+        
+        <li><a class="dropdown-item" asp-controller="Bus" asp-action="Reservation">Reservation</a></li>
+        <li><a class="dropdown-item" asp-controller="Bus" asp-action="ListeReservation">ListeReservationUsers</a></li>
+
+        
+
+    </ul>
+</li>
+
+                                }}
+                        </ul>
+
+                    <ul class="navbar-nav ml-auto">
+
+                        @if (Context.Items["User_"] == null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Authentification"
+                                   asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Register"
+                                   asp-action="Create">Register</a>
+                            </li>
+                        }
+
+
+
+
+                        else
+                        {
+
+                            <li class="nav-item">
+                                <a class="nav-link">
+                                    Willkommen <span class="text-danger">@Context.Items["Firstname_"]</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Authentification"
+                                   asp-action="Logout">Logout</a>
+                            </li>
+
+
+                        }
+
+
+                    </ul>
+
+
+
+
+
+
+                        
+                    </div>
+                </div>
+            </nav>
+
+
+
+
+        </header>
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2023 - webapp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @await Component.InvokeAsync("Notyf")
+        @RenderSection("Scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,48 @@
+﻿
+@using webapp.ViewModels; 
+@model LoginViewModel
+
+<div class="container py-5">
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">Login </h1>
+        <hr class="mt-0 mb-5 bg-dark">
+    </div>
+
+    <div class="row">
+
+        &nbsp;
+    </div>
+
+    <div class="row">
+        <form  asp-controller="Authentification" asp-action="CheckCredentials">
+            <div asp-validation-summary="ModelOnly"></div>
+
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email </label>
+                <input asp-for="Email" type="text" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Password </label>
+                <input asp-for="Password" type="text" class="form-control">
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+            </div>
+
+
+
+
+
+
+            <button type="submit" class="btn btn-primary">Login</button>
+          
+        </form>
+       
+    </div>
+
+
+
+
+</div>
+

@@ -1,0 +1,93 @@
+﻿
+@model List<Fahrer>
+
+
+<div class="container shadow py-5">
+
+    <div class="row">
+        <h1 class="display-4 mt-5 mb-0">ChauffeursListes</h1>
+        <hr class="mt-0 mb-5 bg-black">
+    </div>
+
+    <div class="row">
+        &nbsp;
+    </div>
+
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th scope="col">Name</th>
+                    <th scope="col">Vorname</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Email</th>
+                   
+                    <th scope="col">Image</th>
+                    <th>Actions</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var fahrer in Model)
+                {
+                <tr>
+
+                    <td>@fahrer.FahrerName</td>
+                    <td>@fahrer.FahrerVorName</td>
+                    <td>@fahrer.Age</td>
+                    <td>@fahrer.Email</td>
+
+
+                    <td>
+                        <img src="@fahrer.Image" alt="Description de l'image" width="75" height="75">
+                    </td>
+
+                    <td>
+
+                        <a asp-area="" asp-controller="Fahrer"
+                           asp-action="Edit"
+                           asp-route-id="@fahrer.FahrerId" class="btn btn-primary">Edit</a>
+
+
+                    </td>
+
+                    <td>
+
+                        <a asp-area="" asp-controller="Fahrer"
+                           asp-action="Delete"
+                           asp-route-id="@fahrer.FahrerId" class="btn btn-danger">Delete</a>
+                    </td>
+
+                </tr>
+                }
+
+
+
+            </tbody>
+        </table>
+
+    }
+    else
+    {
+        <p>Kein Fahrer verfugbar</p>
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
